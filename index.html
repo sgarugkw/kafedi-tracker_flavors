@@ -642,7 +642,8 @@
 
                 const checkboxes = document.querySelectorAll('.task-checkbox');
                 checkboxes.forEach(checkbox => {
-                    checkbox.addEventListener('change', handleCheckboxChange);
+                    // Pass the event object to the handler
+                    checkbox.addEventListener('change', (event) => handleCheckboxChange(event));
                 });
 
                 const fileInputs = document.querySelectorAll('input[type="file"]');
@@ -688,26 +689,24 @@
                     updateUI(savedState);
                 } else {
                     console.log("No saved state found. Starting fresh.");
-                    updateAllProgressBars(); 
+                    updateUI({}); // Pass empty state to ensure UI is clean
                 }
             }, (error) => {
                 console.error("Error listening to document:", error);
             });
         }
         
+        // REWRITTEN: This function is now clearer and less error-prone.
         function updateUI(state) {
-            document.querySelectorAll('.task-checkbox, input[type="file"]').forEach(element => {
-                // Handle checkboxes
-                if (element.type === 'checkbox') {
-                    if (state[element.id] !== undefined) {
-                        element.checked = state[element.id];
-                    } else {
-                        element.checked = false;
-                    }
-                }
-                
-                // Handle image previews
-                const imageId = `img-${element.id.split('-')[1]}`;
+            // Handle all checkboxes first
+            document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+                // Use !! to convert any value (true, undefined, null) to a boolean
+                checkbox.checked = !!state[checkbox.id];
+            });
+
+            // Handle all image previews in a separate loop
+            document.querySelectorAll('input[type="file"]').forEach(fileInput => {
+                const imageId = `img-${fileInput.id.split('-')[1]}`;
                 const imagePreview = document.getElementById(imageId);
                 if (imagePreview) {
                     const imageData = state[imageId];
@@ -720,18 +719,24 @@
                     }
                 }
             });
+
+            // Finally, update progress bars based on the new state of all checkboxes
             updateAllProgressBars();
         }
 
-        async function handleCheckboxChange() {
+        // REWRITTEN: This function is more efficient.
+        async function handleCheckboxChange(event) {
+            // First, immediately update the visual progress bar
             updateAllProgressBars();
-            const currentState = {};
-            document.querySelectorAll('.task-checkbox').forEach(cb => {
-                currentState[cb.id] = cb.checked;
-            });
+            
+            // Then, save only the state of the checkbox that was changed
+            const checkbox = event.target;
+            const stateUpdate = {};
+            stateUpdate[checkbox.id] = checkbox.checked;
             
             try {
-                await setDoc(trackerDocRef, currentState, { merge: true });
+                // Use { merge: true } to add/update this one value without overwriting others
+                await setDoc(trackerDocRef, stateUpdate, { merge: true });
             } catch (error) {
                 console.error("Error saving checkbox state to Firestore:", error);
             }
@@ -742,11 +747,13 @@
             if (!file) return;
 
             const reader = new FileReader();
-            const imageId = `img-${event.target.id.split('-')[1]}`; // e.g., 'img-task1'
+            const imageId = `img-${event.target.id.split('-')[1]}`;
 
             reader.onload = async (e) => {
                 const imageData = e.target.result; // Base64 string
                 const imagePreview = document.getElementById(imageId);
+                
+                // Update the UI immediately so the user sees the preview
                 if(imagePreview) {
                     imagePreview.src = imageData;
                     imagePreview.classList.remove('hidden');
