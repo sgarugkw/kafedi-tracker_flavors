@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kafedi baggies</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .task-checkbox:checked + label {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        .task-checkbox:checked + label .task-text {
+             opacity: 0.7;
+        }
+        .custom-checkbox-bg {
+            transition: background-color 0.2s ease-in-out;
+        }
+        .task-checkbox:checked ~ .custom-checkbox-bg {
+            background-color: #eab308; /* yellow-500 */
+            border-color: #eab308; /* yellow-500 */
+        }
+        .task-checkbox:checked ~ .custom-checkbox-bg svg {
+            display: block;
+        }
+        details > summary {
+            list-style: none; /* Hide default marker */
+        }
+        details > summary::-webkit-details-marker {
+            display: none; /* Hide default marker for Safari */
+        }
+        details > summary::before {
+            content: '▶';
+            margin-right: 0.5rem;
+            font-size: 0.7em;
+            transition: transform 0.2s ease-in-out;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body class="bg-black text-white antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <!-- Header -->
+        <header class="text-center mb-10 flex flex-col items-center">
+            <img src="Image_205250903_145729_860.png" alt="Company Logo" class="h-20 w-20 mb-4">
+            <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Kafedi baggies</h1>
+            <p class="text-yellow-400 mt-2 text-lg">Prototype Project Tracker</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Timeline Section -->
+            <section id="timeline">
+                <h2 class="text-2xl font-semibold mb-6 text-white border-b-2 border-yellow-500 pb-2">Project Timeline</h2>
+                <div class="space-y-6">
+                    
+                    <!-- October 2025 -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-month="october">
+                        <h3 class="font-bold text-lg text-yellow-400">October 2025: Flavor Sourcing & Initial Blending</h3>
+                        <p class="text-sm text-gray-300 mt-1 mb-4">Goal: Develop initial flavor profiles for Banana, Caramel, and Vanilla.</p>
+                        <ul class="space-y-3">
+                            <li class="relative flex items-center">
+                                <input type="checkbox" id="task1" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task1" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Source ingredients (e.g., organic banana, lucuma powder for caramel).</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task1" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task1" class="hidden" accept="image/*">
+                                    <img id="img-task1" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task2" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task2" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Grind flavors to match coffee particle size for even mixing.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                 <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task2" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task2" class="hidden" accept="image/*">
+                                    <img id="img-task2" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task3" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task3" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Create & label 5% and 10% flavor batches using 19g coffee base.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                 <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task3" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task3" class="hidden" accept="image/*">
+                                    <img id="img-task3" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-gray-300">Monthly Goal Progress</span>
+                                <span class="text-sm font-medium text-yellow-400" id="progress-text-october">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-500 h-2.5 rounded-full transition-all duration-500 ease-out" id="progress-bar-october" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-700/50">
+                            <details>
+                                <summary class="cursor-pointer text-yellow-400 hover:text-yellow-300 font-medium select-none">More Info</summary>
+                                <div class="mt-2 text-sm text-gray-400 space-y-2">
+                                    <p><strong>Caramel Flavor:</strong> Instead of artificial flavors, consider natural alternatives. Finely grinding dehydrated dates, mesquite powder, or lucuma powder can create rich, caramel-like notes that complement coffee.</p>
+                                    <p><strong>Vanilla Flavor:</strong> For a pure vanilla taste, source high-quality dehydrated vanilla beans. Be aware this can be a premium ingredient, so budget accordingly. Grind them to a fine powder for the best distribution.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- November 2025 -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-month="november">
+                        <h3 class="font-bold text-lg text-yellow-400">November 2025: Sensory Analysis & Perforation</h3>
+                        <p class="text-sm text-gray-300 mt-1 mb-4">Goal: Narrow down flavor ratios and test perforations.</p>
+                        <ul class="space-y-3">
+                            <li class="relative flex items-center">
+                                <input type="checkbox" id="task4" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task4" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Conduct standardized taste tests (controlled temp/time).</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task4" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task4" class="hidden" accept="image/*">
+                                    <img id="img-task4" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task5" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task5" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Test perforation patterns (density/size) on scrap PLA.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task5" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task5" class="hidden" accept="image/*">
+                                    <img id="img-task5" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task6" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task6" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Brew test pockets, checking for sediment and bag integrity.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task6" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task6" class="hidden" accept="image/*">
+                                    <img id="img-task6" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-gray-300">Monthly Goal Progress</span>
+                                <span class="text-sm font-medium text-yellow-400" id="progress-text-november">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-500 h-2.5 rounded-full transition-all duration-500 ease-out" id="progress-bar-november" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-700/50">
+                            <details>
+                                <summary class="cursor-pointer text-yellow-400 hover:text-yellow-300 font-medium select-none">More Info</summary>
+                                <div class="mt-2 text-sm text-gray-400 space-y-2">
+                                    <p><strong>Sensory Analysis:</strong> Use a blind tasting method (participants don't know which sample is which) to avoid bias. Create a simple scoring sheet to rate aroma, flavor, and body on a scale of 1-5 for quantifiable feedback.</p>
+                                    <p><strong>Perforation Tests:</strong> The goal is to balance extraction (more holes) with integrity (fewer holes). Brew over a white cup to easily spot any sediment leakage. Test a grid pattern vs. a random distribution of holes.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                    
+                    <!-- December 2025 -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-month="december">
+                        <h3 class="font-bold text-lg text-yellow-400">December 2025: Finalize Fill Weight & Ratio</h3>
+                        <p class="text-sm text-gray-300 mt-1 mb-4">Goal: Lock in the final coffee-to-flavor ratio and total weight.</p>
+                         <ul class="space-y-3">
+                            <li class="relative flex items-center">
+                                <input type="checkbox" id="task7" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task7" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Hold final tasting panel to select winning flavor ratios.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task7" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task7" class="hidden" accept="image/*">
+                                    <img id="img-task7" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task8" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task8" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Calculate and confirm final gram weight for production.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task8" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task8" class="hidden" accept="image/*">
+                                    <img id="img-task8" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-gray-300">Monthly Goal Progress</span>
+                                <span class="text-sm font-medium text-yellow-400" id="progress-text-december">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-500 h-2.5 rounded-full transition-all duration-500 ease-out" id="progress-bar-december" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-700/50">
+                            <details>
+                                <summary class="cursor-pointer text-yellow-400 hover:text-yellow-300 font-medium select-none">More Info</summary>
+                                <div class="mt-2 text-sm text-gray-400 space-y-2">
+                                    <p><strong>Weight Lock-in:</strong> Finalizing the gram weight is a critical milestone. This exact weight will inform the dimensions of the final bag, the design of your packaging, and the calibration of any future automated filling equipment. It ensures every customer gets a consistent product.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- January 2026 -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-month="january">
+                        <h3 class="font-bold text-lg text-yellow-400">January 2026: Bag Shape & Design</h3>
+                        <p class="text-sm text-gray-300 mt-1 mb-4">Goal: Determine the optimal shape for the coffee bag.</p>
+                         <ul class="space-y-3">
+                            <li class="relative flex items-center">
+                                <input type="checkbox" id="task9" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task9" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Create physical mockups (pyramid shape allows good flow).</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task9" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task9" class="hidden" accept="image/*">
+                                    <img id="img-task9" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task10" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task10" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Test ease of filling and strength of seals on all shapes.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task10" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task10" class="hidden" accept="image/*">
+                                    <img id="img-task10" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-gray-300">Monthly Goal Progress</span>
+                                <span class="text-sm font-medium text-yellow-400" id="progress-text-january">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-500 h-2.5 rounded-full transition-all duration-500 ease-out" id="progress-bar-january" style="width: 0%"></div>
+                            </div>
+                        </div>
+                         <div class="mt-4 pt-4 border-t border-gray-700/50">
+                            <details>
+                                <summary class="cursor-pointer text-yellow-400 hover:text-yellow-300 font-medium select-none">More Info</summary>
+                                <div class="mt-2 text-sm text-gray-400 space-y-2">
+                                    <p><strong>Bag Shape:</strong> The pyramid (sachet) shape is popular because it allows the coffee grounds to tumble and expand, promoting better water circulation and a more even extraction. Square bags are more space-efficient for packing but may cause grounds to clump in corners.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- February 2026 -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-month="february">
+                        <h3 class="font-bold text-lg text-yellow-400">February 2026: First Complete Prototype</h3>
+                        <p class="text-sm text-gray-300 mt-1 mb-4">Goal: Create the first batch of fully functional prototypes.</p>
+                        <ul class="space-y-3">
+                            <li class="relative flex items-center">
+                                <input type="checkbox" id="task11" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task11" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Combine winning elements into a 20-30 unit pilot run.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task11" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task11" class="hidden" accept="image/*">
+                                    <img id="img-task11" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task12" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task12" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Write a Standard Operating Procedure (SOP) for assembly.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task12" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task12" class="hidden" accept="image/*">
+                                    <img id="img-task12" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-gray-300">Monthly Goal Progress</span>
+                                <span class="text-sm font-medium text-yellow-400" id="progress-text-february">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-500 h-2.5 rounded-full transition-all duration-500 ease-out" id="progress-bar-february" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-700/50">
+                            <details>
+                                <summary class="cursor-pointer text-yellow-400 hover:text-yellow-300 font-medium select-none">More Info</summary>
+                                <div class="mt-2 text-sm text-gray-400 space-y-2">
+                                   <p><strong>SOP (Standard Operating Procedure):</strong> Your SOP should be a step-by-step guide. Include details like: heat sealer temperature and dwell time (e.g., 1.5 seconds at 130°C), precise measurements, and the exact process for filling and sealing to ensure anyone can produce an identical prototype.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- March 2026 -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg" data-month="march">
+                        <h3 class="font-bold text-lg text-yellow-400">March 2026: Final Prototype & Feedback Prep</h3>
+                        <p class="text-sm text-gray-300 mt-1 mb-4">Goal: Produce a "golden standard" prototype for external validation.</p>
+                        <ul class="space-y-3">
+                            <li class="relative flex items-center">
+                                <input type="checkbox" id="task13" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task13" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Produce a consistent, high-quality "golden batch" (50-100 units).</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task13" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task13" class="hidden" accept="image/*">
+                                    <img id="img-task13" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task14" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task14" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Design simple, professional packaging for samples.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task14" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task14" class="hidden" accept="image/*">
+                                    <img id="img-task14" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-center">
+                                <input type="checkbox" id="task15" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="task15" class="flex items-center cursor-pointer w-full">
+                                    <span class="task-text pl-8">Create a digital survey for collecting customer feedback.</span>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-task15" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-task15" class="hidden" accept="image/*">
+                                    <img id="img-task15" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="mt-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="text-sm font-medium text-gray-300">Monthly Goal Progress</span>
+                                <span class="text-sm font-medium text-yellow-400" id="progress-text-march">0%</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-yellow-500 h-2.5 rounded-full transition-all duration-500 ease-out" id="progress-bar-march" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-gray-700/50">
+                            <details>
+                                <summary class="cursor-pointer text-yellow-400 hover:text-yellow-300 font-medium select-none">More Info</summary>
+                                <div class="mt-2 text-sm text-gray-400 space-y-2">
+                                   <p><strong>Feedback Survey:</strong> Your survey should be short and focused. Ask questions like: 'On a scale of 1-10, how would you rate the flavor strength?', 'Was the aroma appealing?', and include an open-ended question like 'What, if anything, would you change?'.</p>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Equipment Section -->
+            <section id="equipment">
+                <h2 class="text-2xl font-semibold mb-6 text-white border-b-2 border-yellow-500 pb-2">Required Equipment</h2>
+                <div class="space-y-6">
+
+                    <!-- Flavor Development -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg text-yellow-400">Flavor Development & Formulation</h3>
+                        <ul class="space-y-4 mt-4">
+                            <li class="relative flex items-start">
+                                <input type="checkbox" id="equip1" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip1" class="flex items-start cursor-pointer w-full">
+                                    <div class="pl-8">
+                                        <span class="font-semibold">Commercial-Grade Burr Grinder</span>
+                                        <p class="text-sm text-gray-300">Ensures consistent, fine powder from dehydrated fruits.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip1" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip1" class="hidden" accept="image/*">
+                                    <img id="img-equip1" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-start">
+                                <input type="checkbox" id="equip2" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip2" class="flex items-start cursor-pointer w-full">
+                                     <div class="pl-8">
+                                        <span class="font-semibold">Digital Gram Scale (0.01g)</span>
+                                        <p class="text-sm text-gray-300">Crucial for accurate, repeatable flavor ratios.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip2" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip2" class="hidden" accept="image/*">
+                                    <img id="img-equip2" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                     <!-- Prototyping -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg text-yellow-400">Prototyping & Fabrication</h3>
+                        <ul class="space-y-4 mt-4">
+                            <li class="relative flex items-start">
+                                <input type="checkbox" id="equip3" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip3" class="flex items-start cursor-pointer w-full">
+                                    <div class="pl-8">
+                                        <span class="font-semibold">Impulse Heat Sealer</span>
+                                        <p class="text-sm text-gray-300">With temperature control for sealing PLA textile effectively.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip3" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip3" class="hidden" accept="image/*">
+                                    <img id="img-equip3" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-start">
+                                <input type="checkbox" id="equip4" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip4" class="flex items-start cursor-pointer w-full">
+                                     <div class="pl-8">
+                                        <span class="font-semibold">Perforation Tool</span>
+                                        <p class="text-sm text-gray-300">Options: Pounce wheel, leather punch, or custom die.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip4" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip4" class="hidden" accept="image/*">
+                                    <img id="img-equip4" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-start">
+                                <input type="checkbox" id="equip5" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip5" class="flex items-start cursor-pointer w-full">
+                                     <div class="pl-8">
+                                        <span class="font-semibold">Cutting Mat & Precision Knife</span>
+                                        <p class="text-sm text-gray-300">For accurately cutting textile to desired shapes.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip5" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip5" class="hidden" accept="image/*">
+                                    <img id="img-equip5" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Testing -->
+                    <div class="bg-gray-900 p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg text-yellow-400">Testing & Quality Control</h3>
+                         <ul class="space-y-4 mt-4">
+                            <li class="relative flex items-start">
+                                <input type="checkbox" id="equip6" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip6" class="flex items-start cursor-pointer w-full">
+                                    <div class="pl-8">
+                                        <span class="font-semibold">Gooseneck Kettle</span>
+                                        <p class="text-sm text-gray-300">For consistent water temperature during brewing tests.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip6" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip6" class="hidden" accept="image/*">
+                                    <img id="img-equip6" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                             <li class="relative flex items-start">
+                                <input type="checkbox" id="equip7" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip7" class="flex items-start cursor-pointer w-full">
+                                     <div class="pl-8">
+                                        <span class="font-semibold">Coffee Cupping Spoons/Bowls</span>
+                                        <p class="text-sm text-gray-300">For professional, standardized taste testing.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip7" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip7" class="hidden" accept="image/*">
+                                    <img id="img-equip7" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                              <li class="relative flex items-start">
+                                <input type="checkbox" id="equip8" class="task-checkbox absolute opacity-0 w-5 h-5 cursor-pointer">
+                                <label for="equip8" class="flex items-start cursor-pointer w-full">
+                                     <div class="pl-8">
+                                        <span class="font-semibold">Airtight Storage Containers</span>
+                                        <p class="text-sm text-gray-300">To maintain freshness of coffee and flavorings.</p>
+                                    </div>
+                                </label>
+                                <div class="custom-checkbox-bg absolute left-0 top-0 h-5 w-5 rounded border-2 border-gray-500 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <svg class="h-4 w-4 text-white hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                                </div>
+                                <div class="ml-auto pl-2 flex flex-col items-center">
+                                    <label for="file-equip8" class="cursor-pointer bg-gray-700 hover:bg-gray-600 text-white text-xs font-bold py-1 px-2 rounded">Upload</label>
+                                    <input type="file" id="file-equip8" class="hidden" accept="image/*">
+                                    <img id="img-equip8" src="#" alt="Proof" class="mt-2 rounded-md max-h-16 hidden">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>Tracker status is saved automatically.</p>
+        </footer>
+
+    </div>
+
+    <script type="module">
+        // Firebase Imports
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Firebase Configuration ---
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : { apiKey: "test", authDomain: "test.firebaseapp.com", projectId: "test" };
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-coffee-tracker';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : undefined;
+
+        let db;
+        let auth;
+        let trackerDocRef;
+        let unsubscribe;
+
+        // --- Main Application Logic ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                
+                const userId = auth.currentUser?.uid;
+                if (!userId) {
+                    console.error("Authentication failed, user ID not available.");
+                    return;
+                }
+
+                trackerDocRef = doc(db, `artifacts/${appId}/public/data/projectTrackerState/state`);
+                
+                loadAndListenForState();
+
+                const checkboxes = document.querySelectorAll('.task-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', handleCheckboxChange);
+                });
+
+                const fileInputs = document.querySelectorAll('input[type="file"]');
+                fileInputs.forEach(input => {
+                    input.addEventListener('change', handleFileUpload);
+                });
+
+            } catch (error) {
+                console.error("Error initializing Firebase or loading data:", error);
+            }
+        });
+        
+        // --- Functions ---
+
+        function updateAllProgressBars() {
+            const monthSections = document.querySelectorAll('[data-month]');
+            monthSections.forEach(section => {
+                const month = section.dataset.month;
+                const tasks = section.querySelectorAll('.task-checkbox');
+                const totalTasks = tasks.length;
+                if (totalTasks === 0) return;
+
+                const completedTasks = Array.from(tasks).filter(task => task.checked).length;
+                const percentage = Math.round((completedTasks / totalTasks) * 100);
+
+                const progressBar = document.getElementById(`progress-bar-${month}`);
+                const progressText = document.getElementById(`progress-text-${month}`);
+
+                if (progressBar && progressText) {
+                    progressBar.style.width = `${percentage}%`;
+                    progressText.textContent = `${percentage}%`;
+                }
+            });
+        }
+
+        function loadAndListenForState() {
+             if (unsubscribe) {
+                unsubscribe();
+            }
+            unsubscribe = onSnapshot(trackerDocRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    const savedState = docSnap.data();
+                    updateUI(savedState);
+                } else {
+                    console.log("No saved state found. Starting fresh.");
+                    updateAllProgressBars(); 
+                }
+            }, (error) => {
+                console.error("Error listening to document:", error);
+            });
+        }
+        
+        function updateUI(state) {
+            document.querySelectorAll('.task-checkbox, input[type="file"]').forEach(element => {
+                // Handle checkboxes
+                if (element.type === 'checkbox') {
+                    if (state[element.id] !== undefined) {
+                        element.checked = state[element.id];
+                    } else {
+                        element.checked = false;
+                    }
+                }
+                
+                // Handle image previews
+                const imageId = `img-${element.id.split('-')[1]}`;
+                const imagePreview = document.getElementById(imageId);
+                if (imagePreview) {
+                    const imageData = state[imageId];
+                    if (imageData) {
+                        imagePreview.src = imageData;
+                        imagePreview.classList.remove('hidden');
+                    } else {
+                        imagePreview.classList.add('hidden');
+                        imagePreview.src = '#';
+                    }
+                }
+            });
+            updateAllProgressBars();
+        }
+
+        async function handleCheckboxChange() {
+            updateAllProgressBars();
+            const currentState = {};
+            document.querySelectorAll('.task-checkbox').forEach(cb => {
+                currentState[cb.id] = cb.checked;
+            });
+            
+            try {
+                await setDoc(trackerDocRef, currentState, { merge: true });
+            } catch (error) {
+                console.error("Error saving checkbox state to Firestore:", error);
+            }
+        }
+
+        async function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            const imageId = `img-${event.target.id.split('-')[1]}`; // e.g., 'img-task1'
+
+            reader.onload = async (e) => {
+                const imageData = e.target.result; // Base64 string
+                const imagePreview = document.getElementById(imageId);
+                if(imagePreview) {
+                    imagePreview.src = imageData;
+                    imagePreview.classList.remove('hidden');
+                }
+
+                // Save image data to Firestore
+                const imageState = {};
+                imageState[imageId] = imageData;
+                try {
+                    await setDoc(trackerDocRef, imageState, { merge: true });
+                } catch (error) {
+                    console.error("Error saving image state to Firestore:", error);
+                }
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+</body>
+</html>
+
+
